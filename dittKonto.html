@@ -27,7 +27,21 @@
     <section class="info-section">
         <div class="info-box">
             <h3>Redigera kontaktuppgifter</h3>
-            <p>"Sparade uppgifter listas här"</p>
+            <form id="user-info-form">
+                <div class="form-group">
+                    <label for="firstName">Förnamn:</label>
+                    <input type="text" id="firstName" name="firstName" value="John" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Efternamn:</label>
+                    <input type="text" id="lastName" name="lastName" value="Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-post:</label>
+                    <input type="email" id="email" name="email" value="john.doe@example.com" required>
+                </div>
+                <button type="submit">Uppdatera uppgifter</button>
+            </form>
         </div>
         <div class="info-box">
             <h3>Tidigare ordrar</h3>
