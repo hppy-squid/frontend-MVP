@@ -34,21 +34,27 @@ nav ul li a {
     cursor: pointer;
     border-radius: 5px;
 }
-.hero {
+.about, .account {
+    background-color: darkred;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    text-align: left;
+    padding-left: 50px;
+}
+.info-section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding: 50px;
+    padding: 20px;
 }
-.hero .image-container img {
-    width: 300px;
-    height: auto;
-    border-radius: 10px;
-}
-.text-container h2 {
-    font-size: 40px;
-    color: darkred;
+.info-box {
+    width: 80%;
+    background-color: lightgray;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
 }
 .brands {
     display: flex;
