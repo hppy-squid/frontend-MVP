@@ -8,7 +8,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 40px;
     background-color: white;
 }
 nav ul {
@@ -25,6 +25,14 @@ nav ul li a {
     text-decoration: none;
     color: black;
     font-weight: bold;
+}
+.signup-btn, .cart-btn, .shop-btn {
+    background-color: rgb(139, 0, 0);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 .cart-container {
     width: 60%;
