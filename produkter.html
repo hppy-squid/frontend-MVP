@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vår Kaffeshop</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E5E5E5;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            background-color: white;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            color: #292826;
+        }
+        .signup-btn, .cart-btn, button {
+            background-color: rgb(139, 0, 0);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .signup-btn:hover, .cart-btn:hover, button:hover {
+            background-color: #A00;
+            transform: scale(1.05);
+        }
+        main {
+            display: flex;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px; /* Anpassa bredden så att det ser mer ut som i Figma */
+            margin: 0 auto; /* Centrerar innehållet */
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 270px; /* Gör den bredare */
+            background: rgb(139, 0, 0);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            flex-shrink: 0; /* Förhindrar att den krymper */
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        .sidebar ul li:hover {
+            text-decoration: underline;
+        }
+        .sidebar h3 {
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+        }
+        .products {
+            flex-grow: 1;
+            padding-left: 20px;
+        }
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filters input {
+            background-color: #292826;
+            color: white;
+            flex-grow: 1;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .filters button {
+            background-color: #444040;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filters button:hover {
+            background-color: rgb(97, 94, 94);
+            transform: scale(1.05);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 produkter per rad */
+            gap: 20px;
+            width: 100%; /* Använd hela tillgängliga bredden */
+        }
+        .product-card {
+            background: rgb(139, 0, 0);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background-color: rgb(139, 0, 0);
+            text-align: center;
+            padding: 10px;
+            color: white;
+        }
+        .brands img {
+            width: 100px;
+            margin: 5px;
+        }
+    </style>
+    <script>
+        function filterProducts(category) {
+            let products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (category === 'All' || product.dataset.category === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        function goToProduct(name, price, image) {
+            const url = `detalj.html?name=${encodeURIComponent(name)}&price=${price}&image=${encodeURIComponent(image)}`;
+            window.location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Vår kaffeshop</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="#">Kaffe</a></li>
+                <li><a href="omOss.html">Om oss</a></li>
+                <li><a href="dittKonto.html">Ditt konto</a></li>
+                <li><a href="#">Skapa konto</a></li>
+                <li><button class="signup-btn">Logga in</button></li>
+                <li><button class="cart-btn">🛒</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+        <aside class="sidebar">
+            <h3>Collections</h3>
+            <ul>
+                <li onclick="filterProducts('All')">Alla</li>
+                <li onclick="filterProducts('Mörkrost')">Mörkrost</li>
+                <li onclick="filterProducts('Mellanrost')">Mellanrost</li>
+                <li onclick="filterProducts('Ljusrost')">Ljusrost</li>
+                <li onclick="filterProducts('Espresso')">Espresso</li>
+            </ul>
+        </aside>
+        <section class="products">
+            <div class="filters">
+                <input type="text" placeholder="Sök..">
+                <button>Nytt</button>
+                <button>Pris-stigande</button>
+                <button>Pris-fallande</button>
+                <button>Betyg</button>
+            </div>
+            <div class="product-grid">
+                <div class="product-card" data-category="Mörkrost" onclick="goToProduct('Mörkrost', '10', 'coffee1.jpg')">
+                    <img src="coffee1.jpg" alt="Kaffe 1">
+                    <p>Mörkrost</p>
+                    <p>10 :-</p>
+                </div>
+                <div class="product-card" data-category="Mellanrost" onclick="goToProduct('Mellanrost', '12', 'coffee2.jpg')">
+                    <img src="coffee2.jpg" alt="Kaffe 2">
+                    <p>Mellanrost</p>
+                    <p>12 :-</p>
+                </div>
+                <div class="product-card" data-category="Ljusrost" onclick="goToProduct('Ljusrost', '8', 'coffee3.jpg')">
+                    <img src="coffee3.jpg" alt="Kaffe 3">
+                    <p>Ljusrost</p>
+                    <p>8 :-</p>
+                </div>
+                <div class="product-card" data-category="Mörkrost" onclick="goToProduct('Mörkrostt', '10', 'coffee4.jpg')">
+                    <img src="coffee4.jpg" alt="Kaffe 4">
+                    <p>Mörkrost</p>
+                    <p>10 :-</p>
+                </div>
+                <div class="product-card" data-category="Mellanrost" onclick="goToProduct('Mellanrost', '12', 'coffee5.jpg')">
+                    <img src="coffee5.jpg" alt="Kaffe 5">
+                    <p>Mellanrost</p>
+                    <p>12 :-</p>
+                </div>
+                <div class="product-card" data-category="Ljusrost" onclick="goToProduct('Ljusrost', '8', 'coffee6.jpg')">
+                    <img src="coffee6.jpg" alt="Kaffe 6">
+                    <p>Ljusrost</p>
+                    <p>8 :-</p>
+                </div>
+                <div class="product-card" data-category="Mellanrost" onclick="goToProduct('Mellanrost', '14', 'coffee7.jpg')">
+                    <img src="coffee7.jpg" alt="Kaffe 7">
+                    <p>Mellanrost</p>
+                    <p>14 :-</p>
+                </div>
+                <div class="product-card" data-category="Mörkrost" onclick="goToProduct('Mörkrost', '16', 'coffee8.jpg')">
+                    <img src="coffee8.jpg" alt="Kaffe 8">
+                    <p>Mörkrost</p>
+                    <p>16 :-</p>
+                </div>
+                <div class="product-card" data-category="Mörkrost" onclick="goToProduct('Mörkrost', '11', 'coffee9.jpg')">
+                    <img src="coffee9.jpg" alt="Kaffe 9">
+                    <p>Mörkrost</p>
+                    <p>11 :-</p>
+                </div>
+                <div class="product-card" data-category="Ljusrost" onclick="goToProduct('Ljusrost', '7', 'coffee10.jpg')">
+                    <img src="coffee10.jpg" alt="Kaffe 10">
+                    <p>Ljusrost</p>
+                    <p>7 :-</p>
+                </div>
+                <div class="product-card" data-category="Mellanrost" onclick="goToProduct('Mellanrost', '10', 'coffee11.jpg')">
+                    <img src="coffee11.jpg" alt="Kaffe 11">
+                    <p>Mellanrost</p>
+                    <p>10 :-</p>
+                </div>
+                <div class="product-card" data-category="Ljusrost" onclick="goToProduct('Ljusrost', '19', 'coffee12.jpg')">
+                    <img src="coffee12.jpg" alt="Kaffe 12">
+                    <p>Ljusrost</p>
+                    <p>19 :-</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    </main>
+    <footer>
+        <div class="brands">
+            <img src="zoegas.png" alt="Zoegas">
+            <img src="gevalia.png" alt="Gevalia">
+            <img src="lofbergs.png" alt="Löfbergs">
+            <img src="starbucks.png" alt="Starbucks">
+            <img src="arvid.png" alt="Arvid Nordquist">
+        </div>
+    </footer>
+</body>
+</html>
