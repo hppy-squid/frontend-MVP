@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produktdetalj - Vår Kaffeshop</title>
+    <link rel="stylesheet" href="detalj.css">
+
+    <script>
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get("name"),
+                price: params.get("price"),
+                image: params.get("image"),
+            };
+        }
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            const { name, price, image } = getQueryParams();
+            
+            if (name && price && image) {
+                document.getElementById("product-name").textContent = name;
+                document.getElementById("product-price").textContent = price + " :-";
+                document.getElementById("product-image").src = image;
+            }
+        });
+    </script>
+    
+</head>
+<body>
+    <header>
+        <h1>Vår kaffeshop</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="produkter.html">Kaffe</a></li>
+                <li><a href="omOss.html">Om oss</a></li>
+                <li><a href="dittKonto.html">Ditt konto</a></li>
+                <li><a href="#">Skapa konto</a></li>
+                <li><a href="#">Logga in</a></li>
+            </ul>
+            <button class="sign-up">Sign Up</button>
+            <button class="cart">🛒</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="product">
+            <div class="product-image">
+                <img id="product-image" src="placeholder.png" alt="Produktbild">
+            </div>
+            <div class="product-info">
+                <h2  id="product-name" >Kaffe</h2>
+                <p id="product-price" class="price"> :-</p>
+                <p>500 g</p>
+
+                <div class="options">
+                    <label for="quantity">Välj nedan</label>
+                    <select id="quantity">
+                        <option>1 st</option>
+                        <option>2 st</option>
+                        <option>3 st</option>
+                    </select>
+
+                    <label for="grind">Välj nedan</label>
+                    <select id="grind">
+                        <option>Malda</option>
+                        <option>Hela bönor</option>
+                    </select>
+                </div>
+
+                <button class="buy-button">Buy</button>
+
+                <details>
+                    <summary>Kaffe</summary>
+                    <p>Information om kaffet här</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="reviews">
+            <h3>Omdömen</h3>
+            <div class="review-cards">
+                <div class="review">
+                    <p class="stars">★★★★★</p>
+                    <h4>Magiskt kaffe</h4>
+                    <p>Bästa sidan att köpa kaffe från!!</p>
+                    <p class="author">Inger - 2025-01-25</p>
+                </div>
+
+                <div class="review">
+                    <p class="stars">★★★★★</p>
+                    <h4>Jag är frälst</h4>
+                    <p>Finaste jag druckit!!</p>
+                    <p class="author">Ulla - 2025-02-10</p>
+                </div>
+
+                <div class="review">
+                    <p class="stars">★☆☆☆☆</p>
+                    <h4>Usch!</h4>
+                    <p>Äckligaste kaffe jag någonsin druckit!!!</p>
+                    <p class="author">Karin - 2025-01-30</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="brands">
+                <img src="zoegas.png" alt="Zoégas">
+                <img src="gevalia.png" alt="Gevalia">
+                <img src="lofbergs.png" alt="Löfbergs">
+                <img src="starbucks.png" alt="Starbucks">
+                <img src="arvid.png" alt="Arvid Nordquist">
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
