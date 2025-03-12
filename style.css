@@ -31,7 +31,7 @@ nav ul li a {
     color: black;
     font-weight: bold;
 }
-.signup-btn, .cart-btn, .shop-btn {
+.signin-btn, .cart-btn, .shop-btn {
     background-color: darkred;
     color: white;
     border: none;
