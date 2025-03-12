@@ -8,15 +8,19 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
     background-color: white;
+}
+header h1 {
+    color: darkred;
+    padding-left: 40px;
 }
 nav ul {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 30px;
     margin: 0;
-    padding: 0;
+    padding: 10px;
 }
 nav ul li {
     display: inline;

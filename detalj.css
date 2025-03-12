@@ -4,58 +4,39 @@ body {
     padding: 0;
     background-color: #f8f8f8;
 }
-
-/* Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: white;
-    border-bottom: 2px solid #ccc;
 }
-
-h1 {
-    color: #8b0000;
-    font-size: 26px;
+header h1 {
+    color: darkred;
+    padding-left: 40px;
 }
-
-nav {
-    display: flex;
-    align-items: center;
-}
-
 nav ul {
-    display: flex;
     list-style: none;
-    padding: 0;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 10px;
 }
-
 nav ul li {
-    margin: 0 15px;
+    display: inline;
 }
-
-nav a {
+nav ul li a {
     text-decoration: none;
     color: black;
-    font-size: 16px;
+    font-weight: bold;
 }
-
-.sign-up {
-    background-color: #8b0000;
+.signup-btn, .cart-btn, .shop-btn {
+    background-color: darkred;
     color: white;
-    padding: 8px 12px;
     border: none;
+    padding: 10px 15px;
+    cursor: pointer;
     border-radius: 5px;
-    cursor: pointer;
-}
-
-.cart {
-    background: none;
-    border: none;
-    font-size: 20px;
-    margin-left: 10px;
-    cursor: pointer;
 }
 
 /* Produkt */
@@ -147,14 +128,14 @@ footer {
     display: flex;
     justify-content: center;
 }
-
 .brands {
     display: flex;
+    justify-content: center;
     gap: 30px;
+    padding: 30px;
 }
-
 .brands img {
-    width: 100px;
+    height: 50px;
 }
 
 /* Responsiv design */
