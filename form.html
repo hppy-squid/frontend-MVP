@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vår Kaffeshop</title>
     <link rel="stylesheet" href="form.css">
+    <script type="module" src="js/form.mjs" defer></script>
     <body>
     <header>
         <h1>Vår kaffeshop</h1>
@@ -27,12 +28,12 @@
     
     <section class="form-container">
         <div class="form-box">
-            <form>
-                <label for="firstname">Förnamn:</label>
-                <input type="text" id="firstname" name="firstname" required>
+            <form id="thisForm">
+                <label for="firstName">Förnamn:</label>
+                <input type="text" id="firstName" name="firstName" required>
 
-                <label for="lastname">Efternamn:</label>
-                <input type="text" id="lastname" name="lastname" required>
+                <label for="lastName">Efternamn:</label>
+                <input type="text" id="lastName" name="lastName" required>
                 
                 <label for="email">E-post:</label>
                 <input type="email" id="email" name="email" required>
