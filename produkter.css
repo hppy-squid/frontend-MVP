@@ -38,6 +38,14 @@ nav ul li a {
     cursor: pointer;
     border-radius: 5px;
 }
+.addToCartBtn {
+    background-color: white;
+    color: rgb(139, 0, 0);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 main {
     display: flex;
     padding: 20px;
@@ -49,7 +57,7 @@ main {
     align-items: flex-start;
     padding: 20px;
 }
-.sidebar {
+#sidebar {
     width: 270px; /* Gör den bredare */
     background: rgb(139, 0, 0);
     color: white;
@@ -57,18 +65,18 @@ main {
     border-radius: 10px;
     flex-shrink: 0; /* Förhindrar att den krymper */
 }
-.sidebar ul {
+#sidebar ul {
     list-style: none;
     padding: 0;
 }
-.sidebar ul li {
+#sidebar ul li {
     padding: 5px 0;
     cursor: pointer;
 }
-.sidebar ul li:hover {
+#sidebar ul li:hover {
     text-decoration: underline;
 }
-.sidebar h3 {
+#sidebar h3 {
     border-bottom: 1px solid white;
     padding-bottom: 5px;
 }
@@ -107,7 +115,7 @@ main {
 }
 #product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 produkter per rad */
+    grid-template-columns: repeat(4, 1fr); /* 3 produkter per rad */
     gap: 20px;
     width: 100%; /* Använd hela tillgängliga bredden */
 }
@@ -123,6 +131,8 @@ main {
     width: 100%;
     border-radius: 5px;
     margin-bottom: 10px;
+    max-width: 100px;  
+    max-height: 100px;
 }
 .product-card:hover {
     transform: scale(1.05);

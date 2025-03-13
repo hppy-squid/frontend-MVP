@@ -7,24 +7,6 @@
     <link rel="stylesheet" href="produkter.css">
     <script type="module" src="js/produkter.mjs" defer></script>
 
-
-    <script>
-        function filterProducts(category) {
-            let products = document.querySelectorAll('.product-card');
-            products.forEach(product => {
-                if (category === 'All' || product.dataset.category === category) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-        }
-
-        function goToProduct(name, price, image) {
-            const url = `detalj.html?name=${encodeURIComponent(name)}&price=${price}&image=${encodeURIComponent(image)}`;
-            window.location.href = url;
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -42,15 +24,23 @@
     </header>
     <main>
         <div class="container">
-        <aside class="sidebar">
-            <h3>Collections</h3>
-            <ul>
-                <li onclick="filterProducts('All')">Alla</li>
-                <li onclick="filterProducts('Mörkrost')">Mörkrost</li>
-                <li onclick="filterProducts('Mellanrost')">Mellanrost</li>
-                <li onclick="filterProducts('Ljusrost')">Ljusrost</li>
-                <li onclick="filterProducts('Espresso')">Espresso</li>
-            </ul>
+        <aside id="sidebar">
+            <h3>Rostningsgrad</h3>
+<ul>
+    <li class="roast-filter" data-filter="All">Alla</li>
+    <li class="roast-filter" data-filter="Mörkrost">Mörkrost</li>
+    <li class="roast-filter" data-filter="Mellanrost">Mellanrost</li>
+    <li class="roast-filter" data-filter="Ljusrost">Ljusrost</li>
+    <li class="roast-filter" data-filter="Espresso">Espresso</li>
+</ul>
+
+<h3>Ursprungsland</h3>
+<ul>
+    <li class="country-filter" data-country="All">Alla</li>
+    <li class="country-filter" data-country="Svalbard">Svalbard</li>
+    <li class="country-filter" data-country="Grönland">Grönland</li>
+    <li class="country-filter" data-country="Sverige">Sverige</li>
+</ul>
         </aside>
         <section class="products">
             <div class="filters">
@@ -61,66 +51,6 @@
                 <button>Betyg</button>
             </div>
             <div id="product-grid">
-                <div class="product-card" data-category="Mörkrost" onclick="goToProduct('Mörkrost', '10', 'coffee1.jpg')">
-                    <!-- <img src="coffee1.jpg" alt="Kaffe 1"> -->
-                    <p>Mörkrost</p>
-                    <p>10 :-</p>
-                </div>
-                <div class="product-card" data-category="Mellanrost" onclick="goToProduct('Mellanrost', '12', 'coffee2.jpg')">
-                    <!-- <img src="coffee2.jpg" alt="Kaffe 2"> -->
-                    <p>Mellanrost</p>
-                    <p>12 :-</p>
-                </div>
-                <div class="product-card" data-category="Ljusrost" onclick="goToProduct('Ljusrost', '8', 'coffee3.jpg')">
-                    <!-- <img src="coffee3.jpg" alt="Kaffe 3"> -->
-                    <p>Ljusrost</p>
-                    <p>8 :-</p>
-                </div>
-                <div class="product-card" data-category="Mörkrost" onclick="goToProduct('Mörkrostt', '10', 'coffee4.jpg')">
-                    <!-- <img src="coffee4.jpg" alt="Kaffe 4"> -->
-                    <p>Mörkrost</p>
-                    <p>10 :-</p>
-                </div>
-                <div class="product-card" data-category="Mellanrost" onclick="goToProduct('Mellanrost', '12', 'coffee5.jpg')">
-                    <!-- <img src="coffee5.jpg" alt="Kaffe 5"> -->
-                    <p>Mellanrost</p>
-                    <p>12 :-</p>
-                </div>
-                <div class="product-card" data-category="Ljusrost" onclick="goToProduct('Ljusrost', '8', 'coffee6.jpg')">
-                    <!-- <img src="coffee6.jpg" alt="Kaffe 6"> -->
-                    <p>Ljusrost</p>
-                    <p>8 :-</p>
-                </div>
-                <div class="product-card" data-category="Mellanrost" onclick="goToProduct('Mellanrost', '14', 'coffee7.jpg')">
-                    <!-- <img src="coffee7.jpg" alt="Kaffe 7"> -->
-                    <p>Mellanrost</p>
-                    <p>14 :-</p>
-                </div>
-                <div class="product-card" data-category="Mörkrost" onclick="goToProduct('Mörkrost', '16', 'coffee8.jpg')">
-                    <!-- <img src="coffee8.jpg" alt="Kaffe 8"> -->
-                    <p>Mörkrost</p>
-                    <p>16 :-</p>
-                </div>
-                <div class="product-card" data-category="Mörkrost" onclick="goToProduct('Mörkrost', '11', 'coffee9.jpg')">
-                    <!-- <img src="coffee9.jpg" alt="Kaffe 9"> -->
-                    <p>Mörkrost</p>
-                    <p>11 :-</p>
-                </div>
-                <div class="product-card" data-category="Ljusrost" onclick="goToProduct('Ljusrost', '7', 'coffee10.jpg')">
-                    <!-- <img src="coffee10.jpg" alt="Kaffe 10"> -->
-                    <p>Ljusrost</p>
-                    <p>7 :-</p>
-                </div>
-                <div class="product-card" data-category="Mellanrost" onclick="goToProduct('Mellanrost', '10', 'coffee11.jpg')">
-                    <!-- <img src="coffee11.jpg" alt="Kaffe 11"> -->
-                    <p>Mellanrost</p>
-                    <p>10 :-</p>
-                </div>
-                <div class="product-card" data-category="Ljusrost" onclick="goToProduct('Ljusrost', '19', 'coffee12.jpg')">
-                    <!-- <img src="coffee12.jpg" alt="Kaffe 12"> -->
-                    <p>Ljusrost</p>
-                    <p>19 :-</p>
-                </div>
             </div>
         </section>
     </div>
