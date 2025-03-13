@@ -5,28 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produktdetalj - Vår Kaffeshop</title>
     <link rel="stylesheet" href="detalj.css">
-
-    <script>
-        function getQueryParams() {
-            const params = new URLSearchParams(window.location.search);
-            return {
-                name: params.get("name"),
-                price: params.get("price"),
-                image: params.get("image"),
-            };
-        }
-    
-        document.addEventListener("DOMContentLoaded", () => {
-            const { name, price, image } = getQueryParams();
-            
-            if (name && price && image) {
-                document.getElementById("product-name").textContent = name;
-                document.getElementById("product-price").textContent = price + " :-";
-                document.getElementById("product-image").src = image;
-            }
-        });
-    </script>
-    
+    <script type="module" src="js/detalj.mjs" defer></script>
 </head>
 <body>
     <header>
@@ -47,13 +26,16 @@
     <main>
         <section class="product">
             <div class="product-image">
-                <img id="product-image" src="placeholder.png" alt="Produktbild">
+               <img id="product-image"  alt="Produktbild">
             </div>
             <div class="product-info">
-                <h2  id="product-name" >Kaffe</h2>
-                <p id="product-price" class="price"> :-</p>
-                <p>500 g</p>
-
+                    
+                    <h2 id="product-name">Produktnamn: </h2>
+                    <p id="product-price" class="price">0 :-</p>
+                    <p id="product-roast">Rostnivå: </p>
+                    <p id="product-origin">Ursprungsland: </p>
+                   
+            <!-- Denna info ska skickas med till användarens cart när de trycker på buy-button -->
                 <div class="options">
                     <label for="quantity">Välj nedan</label>
                     <select id="quantity">
@@ -69,11 +51,11 @@
                     </select>
                 </div>
 
-                <button class="buy-button">Buy</button>
+                <button class="buy-button">Köp</button>
 
                 <details>
-                    <summary>Kaffe</summary>
-                    <p>Information om kaffet här</p>
+                    <summary>Beskrivning: </summary>
+                    <p id="product-description"></p>
                 </details>
             </div>
         </section>
