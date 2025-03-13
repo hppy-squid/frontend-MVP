@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vår Kaffeshop</title>
     <link rel="stylesheet" href="omOss.css">
+    <script type="module" src="js/script.mjs" defer></script>
 <body>
     <header>
         <h1>Vår kaffeshop</h1>
@@ -15,10 +16,18 @@
                 <li><a href="omOss.html">Om oss</a></li>
                 <li><a href="dittKonto.html">Ditt konto</a></li>
                 <li><a href="form.html">Skapa konto</a></li>
-                <li><button class="signup-btn">Logga in</button></li>
+                <li><button id="login-btn" class="signin-btn">Logga in</button></li>
                 <li><a href="varukorg.html"><button class="cart-btn">🛒</button></a></li>            </ul>
         </nav>
     </header>
+
+    <div id="login-container" style="display: none;">
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
     
     <section class="about">
         <h2>Om oss</h2>
