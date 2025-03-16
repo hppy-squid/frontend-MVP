@@ -52,7 +52,8 @@ function displayProducts(products) {
                 product.image, 
                 product.roastLevel, 
                 product.originCountry, 
-                product.description
+                product.description,
+                product.id
             );
         });
         if (productElement) {
@@ -121,9 +122,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-function goToProduct(name, price, image, roastLevel, originCountry, description) {
-    const url = `detalj.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}&roastLevel=${encodeURIComponent(roastLevel)}&originCountry=${encodeURIComponent(originCountry)}&description=${encodeURIComponent(description)}`;
-    
+function goToProduct(name, price, image, roastLevel, originCountry, description, id) {
+    const userId = localStorage.getItem("userId");
+    const url = `detalj.html?name=${encodeURIComponent(name)}
+        &price=${encodeURIComponent(price)}
+        &image=${encodeURIComponent(image)}
+        &roastLevel=${encodeURIComponent(roastLevel)}
+        &originCountry=${encodeURIComponent(originCountry)}
+        &description=${encodeURIComponent(description)}
+        &productId=${encodeURIComponent(id)}
+        &userId=${encodeURIComponent(userId)}`;
     window.location.href = url;
 }
 

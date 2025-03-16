@@ -47,6 +47,7 @@ export async function loginFormEvent() {
                 loginContainer.style.display = "none";
                 loginBtn.textContent = "Logout";
                 localStorage.setItem('user', JSON.stringify(data.data));
+                localStorage.setItem('userId', data.data.userId);
                 //window.location.reload();
             } else {
                 console.error('Login failed');
