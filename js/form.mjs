@@ -11,6 +11,7 @@ form.addEventListener("submit", function(e) {
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("registerPassword").value;
+<<<<<<< HEAD
 
     if (!firstName || !lastName) {
         console.log("First and last name are required");
@@ -26,6 +27,8 @@ form.addEventListener("submit", function(e) {
         console.log("Password must be at least 8 characters long");
         return;
     }
+=======
+>>>>>>> origin/main
 
     const userData = {
         firstName: firstName,

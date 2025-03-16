@@ -19,6 +19,7 @@ fetch("http://localhost:8080/api/v1/allProduct", {
 .then(data => {
     console.log("Produkter hämtade: ", data);
     allProducts = data;
+    allProducts = data;
     displayProducts(data);
     displayProducts(allProducts);
 
@@ -97,6 +98,30 @@ function filterProducts(roastCategory, countryCategory) {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector(".filters input[type='text']");
+
+    searchInput.addEventListener("input", () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredProducts = allProducts.filter(product =>
+            product.name.toLowerCase().includes(searchTerm)
+        );
+        displayProducts(filteredProducts);
+    });
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(".filters button:nth-child(3)").addEventListener("click", () => {
+        displayProducts([...allProducts].sort((a, b) => a.price - b.price));
+    });
+
+    document.querySelector(".filters button:nth-child(4)").addEventListener("click", () => {
+        displayProducts([...allProducts].sort((a, b) => b.price - a.price));
+    });
+
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.querySelector(".filters input[type='text']");

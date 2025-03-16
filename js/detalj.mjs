@@ -1,6 +1,5 @@
 const buyBtn = document.querySelector(".buy-button")
 const api = "http://localhost:8080/api/v1";
-//id: params.get("productId"),
 let productId;
 
 
