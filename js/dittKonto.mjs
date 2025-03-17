@@ -39,8 +39,10 @@ async function updateUserInfo(event) {
                 firstName: firstName || null,
                 lastName: lastName || null,
                 email: email || null,
-                password: password
+                password: password || null
     })
+
+    
         });
 
         const responseData = await response.json();

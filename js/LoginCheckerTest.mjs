@@ -94,6 +94,34 @@ export async function checkLoginStatus() {
     }
 }
 
+export async function logout(){
+    loginBtn.addEventListener("click", async () => {
+        if(loginBtn.textContent === "Logout"){
+            try {
+                const response = await fetch(`${api}/auth/logout`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if(response.ok){
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('userId');
+                    localStorage.removeItem('JSESSIONID');
+                    loginBtn.textContent = "Login";
+                    window.location.reload();
+                } else {
+                    console.error('Logout failed');
+                    alert('Logout failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error during logout:', error);
+                alert('An error occurred during logout.');
+            }
+        }
+    });
+}
 
 
-// Call on page load
