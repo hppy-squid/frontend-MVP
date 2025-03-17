@@ -30,7 +30,7 @@ nav ul li a {
     color: black;
     font-weight: bold;
 }
-.signup-btn, .cart-btn, .shop-btn {
+.signin-btn, .cart-btn, .shop-btn {
     background-color: rgb(139, 0, 0);
     color: white;
     border: none;
@@ -67,7 +67,7 @@ nav ul li a {
     border-radius: 5px;
     width: 250px;
 }
-.checkout-btn {
+#stripe-payment-button {
     background-color: darkred;
     color: white;
     border: none;
