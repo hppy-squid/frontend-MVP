@@ -11,6 +11,24 @@ form.addEventListener("submit", function(e) {
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("registerPassword").value;
+<<<<<<< HEAD
+
+    if (!firstName || !lastName) {
+        console.log("First and last name are required");
+        return;
+    }
+
+    if (!email.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}/)) {
+        console.log("Invalid email format");
+        return
+    }
+
+    if (password.length < 8) {
+        console.log("Password must be at least 8 characters long");
+        return;
+    }
+=======
+>>>>>>> origin/main
 
     const userData = {
         firstName: firstName,
