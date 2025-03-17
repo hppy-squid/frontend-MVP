@@ -38,7 +38,7 @@ nav ul li a {
     cursor: pointer;
     border-radius: 5px;
 }
-.cart-container {
+#cart-container {
     width: 60%;
     margin: auto;
     text-align: left;
