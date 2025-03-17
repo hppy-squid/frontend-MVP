@@ -1,8 +1,10 @@
-const user = localStorage.getItem("user"); 
+const userId = localStorage.getItem("userId");
 const cartContainer = document.getElementById("cart-container");
+const stripePaymentButton = document.getElementById("stripe-payment-button");
 
-if (cartContainer) {
-    console.log("cartContainer funkar"); 
+
+if (userId) {
+    console.log("userID  funkar"); 
 }
 
 
@@ -49,3 +51,27 @@ function displayProducts(user) {
 
     displayProducts(user);
 }
+
+if (stripePaymentButton && userId) {
+    stripePaymentButton.addEventListener("click", () => {
+      fetch(`http://localhost:8080/api/v1/checkout/${userId}`, {
+        method: 'POST'
+      })
+      .then(response => {
+        if (!response.ok) {
+          return response.text().then(text => { throw new Error(text); });
+        }
+        return response.text();
+      })
+      .then(checkoutUrl => {
+        // Omdirigera användaren till Stripe Checkout
+        window.location.href = checkoutUrl;
+      })
+      .catch(error => {
+        console.error("Fel vid betalningsinitiering:", error);
+        alert("Något gick fel med betalningen. Försök igen senare.");
+      });
+    });
+  } else {
+    console.error("Kunde inte hitta betalningsknappen eller userId saknas i localStorage.");
+  }
