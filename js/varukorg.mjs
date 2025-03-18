@@ -1,41 +1,43 @@
 const userId = localStorage.getItem("userId");
+const user = localStorage.getItem("user");
+
 const cartContainer = document.getElementById("cart-container");
 const stripePaymentButton = document.getElementById("stripe-payment-button");
 
-
-if (userId) {
-    console.log("userID  funkar"); 
+if (user) {
+  const userData = JSON.parse(user);
+  if (userData.cart && userData.cart.cartItems) {
+    displayProducts(userData);
+    removeProductFromCart(userData);
+  }
 }
 
 
-
-function displayProducts(user) {
+function displayProducts(userData) {
     cartContainer.innerHTML = "";
-    
 
-    user.cart.cartItems.forEach(cartItem => {
+    userData.cart.cartItems.forEach(cartItem => {
         const product = cartItem.product; // Hämta produktdetaljer från varukorgen
-
         const productElement = document.createElement("div");
         productElement.classList.add("cart-item");
         productElement.innerHTML = `
             <img src="${product.image}" alt="${product.productName}">
             <div class="cart-details"> 
-            <h3>${product.productName}</h3>
+            <strong>${product.productName}</strong><br>
             <p>Antal: ${cartItem.amount}</p>
-            </div>
-             <p>Pris: ${product.price} kr</p>
             <p>Rostningsgrad: ${product.roastLevel}</p>
             <p>Ursprungsland: ${product.originCountry}</p>
-            <button class="removeFromCartBtn" onclick="removeFromCart('${cartItem.cartItemId}')">🗑️</button>
+            </div>
+            <p>Pris: ${product.price} kr</p>
+            <button class="removeFromCartBtn" data-product-id="${product.productId}">🗑️</button>
         `;
 
+        
         cartContainer.appendChild(productElement);
-
-        productGrid.appendChild(productElement);
-        productElement.addEventListener('click', () => {
+        const cartDetails = document.querySelector(".cart-details");
+        cartDetails.addEventListener('click', () => {
             goToProduct(
-                product.name, 
+                product.productName, 
                 product.price, 
                 product.image, 
                 product.roastLevel, 
@@ -48,8 +50,44 @@ function displayProducts(user) {
         console.log('productElement hittades');
     }
     });
+}
 
-    displayProducts(user);
+async function removeProductFromCart(userData) {
+  const removeFromCartBtns = document.querySelectorAll(".removeFromCartBtn");
+  const cartId = userData.cart.cartId;
+
+  removeFromCartBtns.forEach(button => {
+    button.addEventListener("click", async (event) => {
+      // Säkerställ att vi utgår från ett element (om t.ex. en textnod klickas)
+      const clickedElement = event.target.nodeType === Node.TEXT_NODE 
+                              ? event.target.parentElement 
+                              : event.target;
+      const buttonElement = clickedElement.closest('.removeFromCartBtn');
+      if (!buttonElement) return; // Avbryt om vi inte hittar knappen
+
+      const productId = buttonElement.dataset.productId;
+      
+      try {
+        const response = await fetch(`http://localhost:8080/api/v1/cartItem/delete/${cartId}/${productId}`, {
+          method: 'DELETE'
+        });
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(errorText);
+        }
+        const result = await response.text();
+        console.log("Product removed:", result);
+        
+        // Ta bort varukortsobjektet från DOM
+        const cartItemElement = buttonElement.closest('.cart-item');
+        if (cartItemElement) {
+          cartItemElement.remove();
+        }
+      } catch (error) {
+        console.error("Error removing product:", error);
+      }
+    });
+  });
 }
 
 if (stripePaymentButton && userId) {
@@ -75,3 +113,16 @@ if (stripePaymentButton && userId) {
   } else {
     console.error("Kunde inte hitta betalningsknappen eller userId saknas i localStorage.");
   }
+
+  function goToProduct(name, price, image, roastLevel, originCountry, description, id) {
+    const userId = localStorage.getItem("userId");
+    const url = `detalj.html?name=${encodeURIComponent(name)}
+        &price=${encodeURIComponent(price)}
+        &image=${encodeURIComponent(image)}
+        &roastLevel=${encodeURIComponent(roastLevel)}
+        &originCountry=${encodeURIComponent(originCountry)}
+        &description=${encodeURIComponent(description)}
+        &productId=${encodeURIComponent(id)}
+        &userId=${encodeURIComponent(userId)}`;
+    window.location.href = url;
+}
