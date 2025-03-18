@@ -1,3 +1,4 @@
+
 const api = "http://localhost:8080/api/v1";
 const loginContainer = document.getElementById("login-container");
 const loginBtn = document.getElementById("login-btn");
@@ -48,6 +49,7 @@ export async function loginFormEvent() {
                 loginBtn.textContent = "Logout";
                 localStorage.setItem('user', JSON.stringify(data.data));
                 localStorage.setItem('userId', data.data.userId);
+                window.location.reload();
                
             } else {
                 console.error('Login failed');
@@ -88,12 +90,10 @@ export async function checkLoginStatus() {
             const data = JSON.parse(responseText);
             loginBtn.textContent = "Logout";
             localStorage.setItem('user', JSON.stringify(data.data));
-
-            document.getElementById("hide-konto").style.display = "block";
             document.getElementById("hide-form").style.display = "none";
            
-
-            
+        } else {
+            document.getElementById("hide-konto").style.display = "none";
 
         }
     } catch (error) {
@@ -103,9 +103,7 @@ export async function checkLoginStatus() {
        
     }
 }
-// document.addEventListener("DOMContentLoaded", () => {
-//     checkLoginStatus();
-// });
+
 
 export async function logout(){
     loginBtn.addEventListener("click", async () => {
@@ -125,6 +123,7 @@ export async function logout(){
                     localStorage.removeItem('JSESSIONID');
                     loginBtn.textContent = "Login";
                     window.location.reload();
+                   
                 } else {
                     console.error('Logout failed');
                     alert('Logout failed. Please try again.');

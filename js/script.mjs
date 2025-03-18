@@ -4,8 +4,8 @@ export const api = "http://localhost:8080/api/v1";
 export const loginContainer = document.getElementById("login-container");
 export const loginBtn = document.getElementById("login-btn");
 export const loginForm = document.getElementById("login-form");
-
-
+document.addEventListener('DOMContentLoaded', function() {
+  
 loginContainerEvent();
 
 loginFormEvent();
@@ -15,3 +15,4 @@ checkLoginStatus();
 
 logout();
 
+  });
