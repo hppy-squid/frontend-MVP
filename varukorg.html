@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varukorg</title>
+    <script type="module" src="js/varukorg.mjs" defer></script>
+    <script type="module" src="js/script.mjs" defer></script>
     <link rel="stylesheet" href="varukorg.css"><body>
     <header>
         <h1>Vår kaffeshop</h1>
@@ -14,13 +16,13 @@
                 <li><a href="omOss.html">Om oss</a></li>
                 <li><a href="dittKonto.html">Ditt konto</a></li>
                 <li><a href="form.html">Skapa konto</a></li>
-                <li><button class="signup-btn">Logga in</button></li>
+                <li><button id="login-btn" class="signin-btn">Logga in</button></li>
                 <li><a href="varukorg.html"><button class="cart-btn">🛒</button></a></li>
             </ul>
         </nav>
     </header>
     
-    <section class="cart-container">
+    <section id="cart-container">
         <h2>Varukorg</h2>
         <div class="cart-item">
             <img src="coffee1.jpg" alt="Jättegott kaffe">
@@ -54,7 +56,7 @@
             <p>Utan frakt: 265 kr</p>
             <p>Frakt: 40 kr</p>
             <h4>Total: 305 kr</h4>
-            <button class="checkout-btn">Continue to payment</button>
+            <button id="stripe-payment-button">Continue to payment</button>
         </div>
     </section>
 </body>
