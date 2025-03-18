@@ -1,3 +1,4 @@
+
 const api = "http://localhost:8080/api/v1";
 const loginContainer = document.getElementById("login-container");
 const loginBtn = document.getElementById("login-btn");
@@ -48,7 +49,8 @@ export async function loginFormEvent() {
                 loginBtn.textContent = "Logout";
                 localStorage.setItem('user', JSON.stringify(data.data));
                 localStorage.setItem('userId', data.data.userId);
-                //window.location.reload();
+                window.location.reload();
+               
             } else {
                 console.error('Login failed');
                 alert('Login failed. Please check your credentials.');
@@ -59,6 +61,8 @@ export async function loginFormEvent() {
         }
     });
 }
+
+
 
 export function loginContainerClose() {
     window.addEventListener("click", (event) => {
@@ -86,13 +90,20 @@ export async function checkLoginStatus() {
             const data = JSON.parse(responseText);
             loginBtn.textContent = "Logout";
             localStorage.setItem('user', JSON.stringify(data.data));
+            document.getElementById("hide-form").style.display = "none";
+           
+        } else {
+            document.getElementById("hide-konto").style.display = "none";
+
         }
     } catch (error) {
         console.error('Error checking login status:', error);
         localStorage.removeItem('user');
         loginBtn.textContent = "Login";
+       
     }
 }
+
 
 export async function logout(){
     loginBtn.addEventListener("click", async () => {
@@ -112,6 +123,7 @@ export async function logout(){
                     localStorage.removeItem('JSESSIONID');
                     loginBtn.textContent = "Login";
                     window.location.reload();
+                   
                 } else {
                     console.error('Logout failed');
                     alert('Logout failed. Please try again.');
