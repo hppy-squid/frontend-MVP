@@ -40,11 +40,11 @@
             <form id="user-info-form">
                 <div class="form-group">
                     <label for="firstName">Förnamn:</label>
-                    <input type="text" id="firstName" name="firstName" value="John" maxlength="20">
+                    <input type="text" id="firstName" name="firstName" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Efternamn:</label>
-                    <input type="text" id="lastName" name="lastName" value="Doe" maxlength="40" >
+                    <input type="text" id="lastName" name="lastName" maxlength="40" >
                 </div>
                 <div class="form-group">
                     <label for="changePassword">Lösenord:</label>
@@ -54,6 +54,15 @@
                     <label for="email">E-post:</label>
                     <input type="email" id="email" name="email" value="john.doe@example.com">
                 </div>
+                <div class="form-group">
+                    <label for="adress">Adress:</label>
+                    <input type="text" id="homeAdress" name="adress">
+                </div>
+                <div class="form-group">
+                    <label for="areaCode">Postnummer:</label>
+                    <input type="text" id="areaCode" name="areaCode">
+                </div>
+
                 <button type="submit">Uppdatera uppgifter</button>
                 <button type="button" id="delete-btn" class="removeUser-btn">Ta bort ditt konto</button>
             </form>

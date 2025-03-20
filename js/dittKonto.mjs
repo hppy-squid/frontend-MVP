@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('firstName').value = user.firstName || '';
         document.getElementById('lastName').value = user.lastName || '';
         document.getElementById('email').value = user.email || '';
+        document.getElementById('homeAdress').value = user.adress || '';
+        document.getElementById('areaCode').value = user.postCode || '';
     }
 });
 
@@ -20,6 +22,9 @@ async function updateUserInfo(event) {
     const email = document.getElementById("email").value;
     const password = document.getElementById("changePassword").value;
     const userId = localStorage.getItem("userId");
+    const adress = document.getElementById("homeAdress").value;
+    const areaCode = document.getElementById("areaCode").value;
+
 
     if (!userId) {
         console.error('No user ID found in localStorage');
@@ -40,7 +45,9 @@ async function updateUserInfo(event) {
                 firstName: firstName || null,
                 lastName: lastName || null,
                 email: email || null,
-                password: password || null
+                password: password || null,
+                adress: adress || null,
+                postCode: areaCode || null
     })
 
 

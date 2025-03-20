@@ -11,6 +11,8 @@ form.addEventListener("submit", function(e) {
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("registerPassword").value;
+    const adress = document.getElementById("adress").value;
+    const postCode = document.getElementById("postCode").value;
 
     if (!firstName || !lastName) {
         console.log("First and last name are required");
@@ -27,11 +29,18 @@ form.addEventListener("submit", function(e) {
         return;
     }
 
+    if (!adress || !postCode) {
+        console.log("Adress and postcode are required");
+        return;
+    }
+
     const userData = {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        password: password
+        password: password,
+        adress: adress,
+        postCode: postCode
     };
 
     fetch("http://localhost:8080/api/v1/users/add", {
