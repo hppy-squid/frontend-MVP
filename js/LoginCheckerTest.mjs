@@ -6,15 +6,17 @@ const loginForm = document.getElementById("login-form");
 
 
 
-
+// Funktion som visar login-formuläret när login-knappen klickas
 export function loginContainerEvent() {
     loginBtn.addEventListener("click", () => {
         loginContainer.style.display = "block";
     });
 }
 
+// Funktion som hanterar login-formuläret när det skickas
 export async function loginFormEvent() {
     loginForm.addEventListener("submit", async (event) => {
+         // Förhindrar standardbeteendet för formulär
         event.preventDefault();
     
         const email = document.getElementById('username').value;
@@ -28,6 +30,7 @@ export async function loginFormEvent() {
         formData.append('password', password);
     
         try {
+            // Skickar en POST-förfrågan till API:et för att logga in användaren
             const response = await fetch(`${api}/auth/login`, {
                 method: 'POST',
                 credentials: 'include',
@@ -47,6 +50,7 @@ export async function loginFormEvent() {
                 console.log('Login successful:', data);
                 loginContainer.style.display = "none";
                 loginBtn.textContent = "Logout";
+                 // Sparar användardata i localStorage
                 localStorage.setItem('user', JSON.stringify(data.data));
                 localStorage.setItem('userId', data.data.userId);
                 window.location.reload();
@@ -62,8 +66,7 @@ export async function loginFormEvent() {
     });
 }
 
-
-
+// Funktion som stänger login-formuläret när det klickas utanför formuläret
 export function loginContainerClose() {
     window.addEventListener("click", (event) => {
         if (event.target === loginContainer) {
@@ -72,9 +75,10 @@ export function loginContainerClose() {
     });
 }
 
-
+// Funktion som kontrollerar om användaren är inloggad
 export async function checkLoginStatus() {
     try {
+        // Skickar en GET-förfrågan till API:et för att kontrollera om användaren är inloggad
         const response = await fetch(`${api}/auth/loggedInUser`, {
             credentials: 'include',
             headers: {
@@ -104,11 +108,13 @@ export async function checkLoginStatus() {
     }
 }
 
-
+// Funktion som loggar ut användaren
 export async function logout(){
     loginBtn.addEventListener("click", async () => {
+        // Kontrollerar om användaren är inloggad
         if(loginBtn.textContent === "Logout"){
             try {
+                // Skickar en POST-förfrågan till API:et för att logga ut användaren
                 const response = await fetch(`${api}/auth/logout`, {
                     method: 'POST',
                     credentials: 'include',
@@ -118,6 +124,7 @@ export async function logout(){
                 });
                 
                 if(response.ok){
+                    // Tar bort användarinformationen från localStorage
                     localStorage.removeItem('user');
                     localStorage.removeItem('userId');
                     localStorage.removeItem('JSESSIONID');
