@@ -66,6 +66,8 @@ nav ul li a {
     padding: 15px;
     border-radius: 5px;
     width: 250px;
+    align-items: center;
+    margin: auto;
 }
 #stripe-payment-button {
     background-color: darkred;
