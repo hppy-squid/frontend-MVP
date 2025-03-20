@@ -1,9 +1,7 @@
 const productGrid = document.getElementById("product-grid")
 let allProducts = []; 
-if (productGrid) {
-    console.log("product-grid hittades");
-}
 
+//hämtar alla produkter från backend
 fetch("http://localhost:8080/api/v1/allProduct", {
     method: "GET" ,
     headers: {
@@ -32,7 +30,7 @@ function displayProducts(products) {
     productGrid.innerHTML = "";
     
 
-    // addToCartBtn ej klar, här ska produkt skickas till personens cart --------------------------------
+    //hämtar alla produkter i databas och listar ut dem som kort på produktsidan.
     products.forEach(product => {
         const productElement = document.createElement('div');
         productElement.classList.add('product-card');
@@ -62,6 +60,7 @@ function displayProducts(products) {
     }
     });
 }
+//filter
 document.addEventListener("DOMContentLoaded", () => {
     let roastLevel = "All";
     let originCountry = "All";
@@ -81,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+//filter
 function filterProducts(roastCategory, countryCategory) {
     let products = document.querySelectorAll('.product-card');
 
@@ -147,6 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+//skapar länkar till varje produkts detaljsida
 function goToProduct(name, price, image, roastLevel, originCountry, description, id) {
     const userId = localStorage.getItem("userId");
     const url = `detalj.html?name=${encodeURIComponent(name)}
