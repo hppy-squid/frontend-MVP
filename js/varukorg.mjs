@@ -4,6 +4,7 @@ const user = localStorage.getItem("user");
 const cartContainer = document.getElementById("cart-container");
 const stripePaymentButton = document.getElementById("stripe-payment-button");
 
+//checkar om user finns i localstorage, om det finns körs funktionerna
 if (user) {
   const userData = JSON.parse(user);
   if (userData.cart && userData.cart.cartItems) {
@@ -12,7 +13,7 @@ if (user) {
   }
 }
 
-
+//funktion för att skriva ut produkter i en users cart
 function displayProducts(userData) {
     cartContainer.innerHTML = "";
 
@@ -20,6 +21,7 @@ function displayProducts(userData) {
         const product = cartItem.product; // Hämta produktdetaljer från varukorgen
         const productElement = document.createElement("div");
         productElement.classList.add("cart-item");
+        //varje produkt skrivs ut i följande html mönster
         productElement.innerHTML = `
             <img src="${product.image}" alt="${product.productName}">
             <div class="cart-details"> 
@@ -51,14 +53,14 @@ function displayProducts(userData) {
     }
     });
 }
-
+//tar bort produkt från varukorg när man klickar på ta bort knappen
 async function removeProductFromCart(userData) {
   const removeFromCartBtns = document.querySelectorAll(".removeFromCartBtn");
   const cartId = userData.cart.cartId;
 
   removeFromCartBtns.forEach(button => {
     button.addEventListener("click", async (event) => {
-      // Säkerställ att vi utgår från ett element (om t.ex. en textnod klickas)
+      // Säkerställ att vi utgår från ett element, kunde annars inte klicka på knappen utan blev redirectad till produktsidan.
       const clickedElement = event.target.nodeType === Node.TEXT_NODE 
                               ? event.target.parentElement 
                               : event.target;
