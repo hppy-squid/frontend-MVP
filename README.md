@@ -2,6 +2,11 @@
 
 Frontend applikation kopplad till https://github.com/hppy-squid/idea-to-MVP
 
+Nedan är en länk till figma:  
+https://www.figma.com/design/5YYYdfksbNhKjqvOjisk4V/Figma-basics?node-id=1669-162202&p=f&t=WZt6S5zExG2xV6lr-0
+
+Nedan är en länk till mural: https://app.mural.co/t/grupp56899/m/grupp56899/1739906128227/bc405b46638ebe22ba4e4c2330640d71ce12161c
+
 # Vår Kaffeshop
 
 ## Beskrivning
